@@ -6,7 +6,7 @@ import {
   RenderingType,
   SitecoreContext,
   ComponentPropsContext,
-  EditingComponentPlaceholder,
+  Placeholder,
   StaticPath,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { handleEditorFastRefresh } from '@sitecore-jss/sitecore-jss-nextjs/utils';
@@ -46,7 +46,9 @@ const SitecorePage = ({
           If you are using Experience Editor only, this logic can be removed, Layout can be left.
         */}
         {isComponentRendering ? (
-          <EditingComponentPlaceholder rendering={layoutData.sitecore.route} />
+          layoutData.sitecore.route && (
+            <Placeholder name="jss-main" rendering={layoutData.sitecore.route} />
+          )
         ) : (
           <Layout layoutData={layoutData} headLinks={headLinks} />
         )}

@@ -11,9 +11,15 @@ class ComputedPlugin implements ConfigPlugin {
   order = 10;
 
   async exec(config: JssConfig) {
+    // Only compute graphQLEndpoint if sitecoreApiHost is set and graphQLEndpoint is not already provided
+    const computedGraphQLEndpoint =
+      config.graphQLEndpoint ||
+      (config.sitecoreApiHost && config.graphQLEndpointPath
+        ? `${config.sitecoreApiHost}${config.graphQLEndpointPath}`
+        : undefined);
+
     return Object.assign({}, config, {
-      graphQLEndpoint:
-        config.graphQLEndpoint || `${config.sitecoreApiHost}${config.graphQLEndpointPath}`,
+      graphQLEndpoint: computedGraphQLEndpoint,
     });
   }
 }
