@@ -1,6 +1,7 @@
 {
     "renderingHosts": {
       "test": {
+        "path": "./",
         "nodeVersion": "18.20.0",
         "jssDeploymentSecret": "464StHc30jxgrl8nV0NN0e",
         "enabled": true,
