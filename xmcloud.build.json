@@ -1,0 +1,36 @@
+{
+    "renderingHosts": {
+      "nextjsstarter": {
+        "path": ".",
+        "nodeVersion": "18.20.0",
+        "jssDeploymentSecret": "464StHc30jxgrl8nV0NN0e",
+        "enabled": true,
+        "type": "sxa",
+        "buildCommand": "build",
+        "runCommand": "next:start"
+      }
+    },
+    "postActions": {
+        "actions":{
+          "warmUpCm": {
+            "urls": [
+              "/sitecore/shell",
+              "/sitecore/shell/Applications/Content%20Editor.aspx?sc_bw=1",
+              "/sitecore/client/Applications/Launchpad"
+            ]
+          },
+          "populateSchema": {
+            "indexNames": []
+          },
+          "reindex": {
+            "indexNames": []
+          }
+        }
+    },
+    "transforms": [
+       {
+          "xdtPath": "/app_data/xdts/web.config.xdt",
+          "targetPath": "/web.config"
+       }
+    ]
+}
